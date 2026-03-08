@@ -1,4 +1,4 @@
-import type { WeaponType, WeaponConfig, WeaponDrop } from './types'
+import type { WeaponType, WeaponConfig, WeaponDrop } from '../types'
 
 export const WEAPONS: Record<WeaponType, WeaponConfig> = {
     sword: {
@@ -32,7 +32,7 @@ const WEAPON_LIST: WeaponType[] = ['sword', 'dual_swords', 'axe', 'bow', 'shurik
 export function getRandomWeapon(): WeaponType {
     // Don't drop basic sword, only special weapons
     const specials = WEAPON_LIST.filter(w => w !== 'sword')
-    return specials[Math.floor(Math.random() * specials.length)]
+    return specials[Math.floor(Math.random() * specials.length)]!
 }
 
 export function createWeaponDrop(x: number, y: number, weapon?: WeaponType): WeaponDrop {
@@ -209,7 +209,7 @@ export function drawInventory(
 
     // Selected weapon details
     if (selectedIdx >= 0 && selectedIdx < allWeapons.length) {
-        const wt = allWeapons[selectedIdx]
+        const wt = allWeapons[selectedIdx]!
         const cfg = WEAPONS[wt]
         const detX = px + 220
         const detY = startY + 8

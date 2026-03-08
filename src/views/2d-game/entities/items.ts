@@ -1,4 +1,4 @@
-import type { ItemType, Chest } from './types'
+import type { ItemType, Chest } from '../types'
 
 const ITEM_NAMES: Record<ItemType, string> = {
     hp_potion: '❤️ HP Potion',
@@ -28,7 +28,7 @@ export { ITEM_NAMES, ITEM_COLORS, ITEM_DURATIONS }
 
 export function createChest(x: number, y: number): Chest {
     const items: ItemType[] = ['hp_potion', 'hp_potion', 'atk_boost', 'speed_boost', 'shield', 'exp_gem']
-    const item = items[Math.floor(Math.random() * items.length)]
+    const item = items[Math.floor(Math.random() * items.length)]!
     return {
         x, y: y - 24, w: 24, h: 24,
         opened: false, openTimer: 0,

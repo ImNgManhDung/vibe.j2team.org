@@ -1,4 +1,4 @@
-import type { BiomeType, BiomeConfig } from './types'
+import type { BiomeType, BiomeConfig } from '../types'
 
 export const BIOMES: Record<BiomeType, BiomeConfig> = {
     forest: {
@@ -43,7 +43,7 @@ const BIOME_ORDER: BiomeType[] = ['forest', 'desert', 'ice', 'volcano']
 
 export function getBiomeForLevel(level: number): BiomeType {
     const idx = Math.floor((level - 1) / 3) % BIOME_ORDER.length
-    return BIOME_ORDER[idx]
+    return BIOME_ORDER[idx] ?? 'forest'
 }
 
 export function getBiomeConfig(level: number): BiomeConfig {

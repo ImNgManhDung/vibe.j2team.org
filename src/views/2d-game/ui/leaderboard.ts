@@ -1,4 +1,4 @@
-import type { LeaderboardEntry } from './types'
+import type { LeaderboardEntry } from '../types'
 
 const STORAGE_KEY = 'ninja_quest_leaderboard'
 const MAX_ENTRIES = 5
