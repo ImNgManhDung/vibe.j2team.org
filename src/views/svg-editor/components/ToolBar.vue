@@ -13,7 +13,7 @@ const tools: Tool[] = [
   { id: 'select', icon: 'lucide:mouse-pointer-2', label: 'Chọn', shortcut: 'V' },
   { id: 'rect', icon: 'lucide:square', label: 'Hình chữ nhật', shortcut: 'R' },
   { id: 'circle', icon: 'lucide:circle', label: 'Hình tròn', shortcut: 'C' },
-  { id: 'ellipse', icon: 'lucide:oval-horizontal', label: 'Hình elip', shortcut: 'E' },
+  { id: 'ellipse', icon: 'lucide:circle', label: 'Hình elip', shortcut: 'E' },
   { id: 'line', icon: 'lucide:minus', label: 'Đường thẳng', shortcut: 'L' },
   { id: 'path', icon: 'lucide:pen-tool', label: 'Vẽ tự do', shortcut: 'P' },
   { id: 'polygon', icon: 'lucide:hexagon', label: 'Đa giác', shortcut: 'G' },
@@ -63,7 +63,7 @@ const dashOptions = [
         : 'border-transparent text-text-secondary hover:text-text-primary hover:bg-bg-elevated'"
       @click="emit('update:activeTool', tool.id)"
     >
-      <Icon :icon="tool.icon" class="size-[18px]" />
+      <Icon :icon="tool.icon" class="size-[18px]" :class="tool.id === 'ellipse' ? 'scale-x-[1.4] scale-y-[0.8]' : ''" />
       
       <!-- Quick Brush Size for Pen -->
       <div v-if="tool.id === 'path' && activeTool === 'path'" class="absolute left-full ml-1 p-2 bg-bg-surface border border-accent-coral shadow-xl z-[60] flex flex-col items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-200">
@@ -104,7 +104,7 @@ const dashOptions = [
 
     <!-- Stroke Width -->
     <div class="flex flex-col items-center gap-1 px-1 mb-2">
-      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Width</span>
+      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Độ dày</span>
       <input
         :value="strokeWidth" type="number" min="0" max="50" step="0.5"
         class="w-10 bg-bg-elevated border border-border-default text-center text-[10px] text-text-primary py-0.5 font-mono focus:border-accent-coral focus:outline-none"
@@ -114,7 +114,7 @@ const dashOptions = [
 
     <!-- Stroke Dash -->
     <div class="flex flex-col items-center gap-1 px-1 mb-2">
-      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Dash</span>
+      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Nét đứt</span>
       <select
         :value="strokeDasharray"
         class="w-10 bg-bg-elevated border border-border-default text-[10px] text-text-primary py-0.5 font-mono focus:border-accent-coral focus:outline-none cursor-pointer"
@@ -126,13 +126,13 @@ const dashOptions = [
 
     <!-- Color pickers -->
     <div class="flex flex-col items-center gap-1 mb-1">
-      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Fill</span>
+      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Nền</span>
       <label class="relative w-8 h-8 border-2 border-border-default overflow-hidden cursor-pointer hover:border-text-secondary hover:scale-105 transition-all duration-200" :style="{ backgroundColor: fillColor }">
         <input :value="fillColor" type="color" class="sr-only" @input="emit('update:fillColor', ($event.target as HTMLInputElement).value)" />
       </label>
     </div>
     <div class="flex flex-col items-center gap-1 mb-2">
-      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Stroke</span>
+      <span class="text-[8px] text-text-dim tracking-wider uppercase font-display">Viền</span>
       <label class="relative w-8 h-8 border-2 border-border-default overflow-hidden cursor-pointer hover:border-text-secondary hover:scale-105 transition-all duration-200" :style="{ backgroundColor: strokeColor }">
         <input :value="strokeColor" type="color" class="sr-only" @input="emit('update:strokeColor', ($event.target as HTMLInputElement).value)" />
       </label>

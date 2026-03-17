@@ -48,7 +48,7 @@ const modalBtn = 'flex items-center gap-1.5 px-3 py-1.5 border border-border-def
           </button>
           <button :class="[modalBtn, copied ? 'text-green-400 border-green-500/50' : '']" @click="copy(isEditing ? editCode : svgCode)">
             <Icon :icon="copied ? 'lucide:check' : 'lucide:copy'" class="size-3.5" />
-            {{ copied ? 'Đã copy!' : 'Copy' }}
+            {{ copied ? 'Đã sao chép!' : 'Sao chép (Copy)' }}
           </button>
           <button class="p-1.5 text-text-secondary hover:text-text-primary transition" @click="emit('close')">
             <Icon icon="lucide:x" class="size-4" />

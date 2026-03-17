@@ -53,7 +53,7 @@ defineExpose({ setError })
       <div class="flex items-center justify-between px-4 py-3 border-b border-border-default bg-bg-deep/50">
         <div class="flex items-center gap-2">
           <Icon icon="lucide:upload" class="size-4 text-accent-sky" />
-          <h3 class="font-display font-semibold tracking-wide uppercase text-xs">Import SVG / Image</h3>
+          <h3 class="font-display font-semibold tracking-wide uppercase text-xs">Nhập SVG / Ảnh (Import)</h3>
         </div>
         <button class="p-1.5 text-text-secondary hover:text-accent-coral transition-colors" @click="emit('close')">
           <Icon icon="lucide:x" class="size-4" />
@@ -84,7 +84,7 @@ defineExpose({ setError })
               @click="handleImport"
             >
               <Icon icon="lucide:check" class="size-4" />
-              IMPORT
+              NHẬP (IMPORT)
             </button>
             
             <label class="flex items-center gap-2 px-4 py-2 border border-border-default bg-bg-elevated/50 text-text-primary text-sm font-display font-semibold transition-all hover:bg-accent-amber hover:text-bg-deep hover:border-accent-amber cursor-pointer group">
@@ -95,7 +95,7 @@ defineExpose({ setError })
           </div>
           
           <div class="text-[10px] text-text-dim uppercase tracking-widest font-display italic">
-            Max 5MB recommended
+            Tối đa 5MB (Max 5MB)
           </div>
         </div>
       </div>

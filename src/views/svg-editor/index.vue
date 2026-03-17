@@ -365,7 +365,7 @@ watch(activeTool, () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-bg-deep text-text-primary font-body flex flex-col">
+  <div class="h-screen bg-bg-deep text-text-primary font-body flex flex-col overflow-hidden">
     <EditorHeader
       :can-undo="canUndo" :can-redo="canRedo" :zoom="zoom"
       @undo="undo" @redo="redo"
@@ -401,15 +401,18 @@ watch(activeTool, () => {
         @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
       />
 
-      <aside class="w-[240px] border-l border-border-default bg-bg-surface shrink-0 overflow-y-auto hidden lg:flex flex-col">
-        <PropertiesPanel
-          :selected-element="selectedElement" :selected-count="selectedIds.size"
-          @update-prop="onPropUpdate" @duplicate="duplicateSelected" @move-up="moveUp"
-          @move-down="moveDown" @delete="deleteSelected"
-          @group="groupSelected" @ungroup="ungroupSelected"
-          @align="alignElements" @rotate="onRotate"
-        />
+      <aside class="w-[240px] border-l border-border-default bg-bg-surface shrink-0 hidden lg:flex flex-col overflow-hidden">
+        <div class="shrink-0 overflow-y-auto max-h-[45vh]">
+          <PropertiesPanel
+            :selected-element="selectedElement" :selected-count="selectedIds.size"
+            @update-prop="onPropUpdate" @duplicate="duplicateSelected" @move-up="moveUp"
+            @move-down="moveDown" @delete="deleteSelected"
+            @group="groupSelected" @ungroup="ungroupSelected"
+            @align="alignElements" @rotate="onRotate"
+          />
+        </div>
         <LayersPanel
+          class="flex-1 min-h-0"
           :elements="elements" :selected-ids="selectedIds"
           @select="selectLayer" @toggle-visibility="toggleVisibility" @toggle-lock="toggleLock"
         />

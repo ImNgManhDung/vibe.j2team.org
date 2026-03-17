@@ -142,7 +142,7 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
 
       <!-- Fill -->
       <div class="space-y-1">
-        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Fill</label>
+        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Màu nền (Fill)</label>
         <div class="flex items-center gap-2">
           <label class="w-5 h-5 border border-border-default shrink-0 cursor-pointer" :style="{ backgroundColor: selectedElement.fill.startsWith('url') ? '#222' : selectedElement.fill }">
             <input :value="selectedElement.fill.startsWith('url') ? '#000000' : selectedElement.fill" type="color" class="sr-only" @input="onInput('fill', $event)" />
@@ -153,7 +153,7 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
 
       <!-- Stroke -->
       <div class="space-y-1">
-        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Stroke</label>
+        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Viền (Stroke)</label>
         <div class="flex items-center gap-2">
           <label class="w-5 h-5 border border-border-default shrink-0 cursor-pointer" :style="{ backgroundColor: selectedElement.stroke.startsWith('url') ? '#222' : selectedElement.stroke }">
             <input :value="selectedElement.stroke.startsWith('url') ? '#000000' : selectedElement.stroke" type="color" class="sr-only" @input="onInput('stroke', $event)" />
@@ -165,11 +165,11 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
       <!-- Width + Opacity -->
       <div class="grid grid-cols-2 gap-2">
         <div class="space-y-1">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Stroke Width</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Độ dày (Width)</label>
           <input :value="selectedElement.strokeWidth" type="number" min="0" max="50" step="0.5" :class="inputClass" class="w-full" @input="onInput('strokeWidth', $event)" />
         </div>
         <div class="space-y-1">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Opacity</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Độ mờ (Opacity)</label>
           <input :value="selectedElement.opacity" type="number" min="0" max="1" step="0.05" :class="inputClass" class="w-full" @input="onInput('opacity', $event)" />
         </div>
       </div>
@@ -177,7 +177,7 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
       <!-- Rotation -->
       <div class="space-y-1">
         <div class="flex items-center justify-between">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display">Rotation</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display">Xoay (Rotation)</label>
           <span class="text-accent-coral font-mono text-[10px]">{{ selectedElement.rotation ?? 0 }}°</span>
         </div>
         <div class="flex items-center gap-1">
@@ -190,29 +190,29 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
 
       <!-- Dash + Cap/Join -->
       <div class="space-y-1">
-        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Dash</label>
+        <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Nét đứt (Dash)</label>
         <select :value="selectedElement.strokeDasharray" :class="inputClass" class="w-full cursor-pointer" @change="onInput('strokeDasharray', $event)">
-          <option value="">Solid</option>
-          <option value="8 4">Dashed</option>
-          <option value="2 4">Dotted</option>
-          <option value="8 4 2 4">Dash-Dot</option>
+          <option value="">Liền</option>
+          <option value="8 4">Nét đứt</option>
+          <option value="2 4">Chấm</option>
+          <option value="8 4 2 4">Đứt-Chấm</option>
         </select>
       </div>
       <div class="grid grid-cols-2 gap-2">
         <div class="space-y-1">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Cap</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Đầu nét (Cap)</label>
           <select :value="selectedElement.lineCap" :class="inputClass" class="w-full cursor-pointer" @change="onInput('lineCap', $event)">
-            <option value="butt">Butt</option>
-            <option value="round">Round</option>
-            <option value="square">Square</option>
+            <option value="butt">Thẳng</option>
+            <option value="round">Tròn</option>
+            <option value="square">Vuông</option>
           </select>
         </div>
         <div class="space-y-1">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Join</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Nối góc (Join)</label>
           <select :value="selectedElement.lineJoin" :class="inputClass" class="w-full cursor-pointer" @change="onInput('lineJoin', $event)">
-            <option value="miter">Miter</option>
-            <option value="round">Round</option>
-            <option value="bevel">Bevel</option>
+            <option value="miter">Nhọn</option>
+            <option value="round">Tròn</option>
+            <option value="bevel">Vát</option>
           </select>
         </div>
       </div>
@@ -220,16 +220,16 @@ const inputClass = 'bg-bg-elevated border border-border-default px-2 py-1 text-t
       <!-- Text -->
       <template v-if="selectedElement.type === 'text'">
         <div class="space-y-1">
-          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Text</label>
+          <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Nội dung (Text)</label>
           <input :value="selectedElement.text" type="text" :class="inputClass" class="w-full" @change="onInput('text', $event)" />
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div class="space-y-1">
-            <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Size</label>
+            <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Cỡ chữ (Size)</label>
             <input :value="selectedElement.fontSize" type="number" min="8" max="200" :class="inputClass" class="w-full" @input="onInput('fontSize', $event)" />
           </div>
           <div class="space-y-1">
-            <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Font</label>
+            <label class="text-text-dim text-[10px] tracking-wide uppercase font-display block">Phông (Font)</label>
             <select :value="selectedElement.fontFamily ?? 'sans-serif'" :class="inputClass" class="w-full cursor-pointer" @change="onInput('fontFamily', $event)">
               <option value="sans-serif">Sans</option>
               <option value="serif">Serif</option>
